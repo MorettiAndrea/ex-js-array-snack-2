@@ -70,19 +70,19 @@ const books = [
 // Salva in una variabile (fullPricedBook) il primo elemento di discountedBooks che ha un prezzo intero (senza centesimi).
 
 
-const availableBooks= books.filter(book=>book.available===true)
-const discountedBooks= availableBooks.map((book)=>{
+// const availableBooks= books.filter(book=>book.available===true)
+// const discountedBooks= availableBooks.map((book)=>{
 
-    discountPrice= parseInt(book.price) * 0.8.toFixed(2)+"€"
-   return{...book,price:discountPrice}
-})
+//     discountPrice= parseInt(book.price) * 0.8.toFixed(2)+"€"
+//    return{...book,price:discountPrice}
+// })
 
-const fullPricedBook= discountedBooks.find(book=>Number.isInteger(parseInt(book.price)))
-
-
+// const fullPricedBook= discountedBooks.find(book=>Number.isInteger(parseInt(book.price)))
 
 
-console.log(fullPricedBook);
+
+
+// console.log(fullPricedBook);
 
 
 
@@ -92,6 +92,18 @@ console.log(fullPricedBook);
 // Crea una variabile booleana (areAuthorsAdults) per verificare se gli autori sono tutti maggiorenni.
 // Ordina l’array authors in base all’età, senza creare un nuovo array.
 // (se areAuthorsAdult è true, ordina in ordine crescente, altrimenti in ordine decrescente)
+
+const authors= books.map(author=>author.author)
+const areAuthorsAdult= authors.every(author=>author.age >= 18)
+areAuthorsAdult === true? authors.sort((a,b)=>{return a.age - b.age}) : authors.sort((a,b)=>{
+    return b.age - a.age
+})
+
+
+
+console.log(areAuthorsAdult);
+console.log(authors);
+
 
 
 // Snack 4 - Calcola l’età media
