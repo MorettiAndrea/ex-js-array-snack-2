@@ -56,8 +56,12 @@ function sum (a,b){
 }
 
 const longBooks = books.filter(book=>book.pages >300)
+const longBooksTitles= longBooks.map(book => book.title)
+longBooksTitles.forEach(book=> console.log(book)
+)
 
-console.log(longBooks);
+
+
 
 
 // Snack 2 - Il primo libro scontato
