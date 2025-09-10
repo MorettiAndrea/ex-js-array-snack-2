@@ -55,6 +55,8 @@ const books = [
 //     return a+b
 // }
 
+// console.log(sum(2,5));
+
 // const longBooks = books.filter(book=>book.pages >300)
 // const longBooksTitles= longBooks.map(book => book.title)
 // longBooksTitles.forEach(book=> console.log(book)
@@ -111,13 +113,13 @@ const books = [
 // Calcola la somma delle età (agesSum) usando reduce.
 // Stampa in console l’età media degli autori dei libri.
 
-const ages = books.map(author=>author.author.age)
-const agesSum=ages.reduce((acc,curr)=>(acc+curr),0)
-const avarageAge= agesSum/ages.length
+// const ages = books.map(author=>author.author.age)
+// const agesSum=ages.reduce((acc,curr)=>(acc+curr),0)
+// const avarageAge= agesSum/ages.length
 
-console.log(ages);
-console.log(agesSum);
-console.log(avarageAge);
+// console.log(ages);
+// console.log(agesSum);
+// console.log(avarageAge);
 
 
 
@@ -132,11 +134,38 @@ console.log(avarageAge);
 // per chiamare l'endpoint /users
 // Clicca qui per la guida su come installare il Server API Locale!
 
+// const Baseurl ="http://localhost:3333"
+
+
+
 // Usando la l'API https://boolean-spec-frontend.vercel.app/freetestapi/books/{id} usa la combinazione di .map() e Promise.all(), per creare una funzione (getBooks) che a partire da un array di id (ids), ritorna una promise che risolve un array di libri (books).
 // Testala con l’array [2, 13, 7, 21, 19] .
+
+
 // Snack 6 (Bonus) - Ordina i libri
 // Crea una variabile booleana (areThereAvailableBooks) per verificare se c’è almeno un libro disponibile.
 // Crea un array (booksByPrice) con gli elementi di books ordinati in base al prezzo (crescente).
 // Ordina l’array booksByPricein base alla disponibilità (prima quelli disponibili), senza creare un nuovo array.
+
+const areThereAvailableBooks= books.some(book=>book.available)
+const booksByPrice= books.sort((a,b)=>{return parseInt(a.price)-parseInt(b.price)})
+
+
+console.log("areThereAvailableBooks",areThereAvailableBooks);
+console.log("booksByPrice",booksByPrice);
+
+
+
 // Snack 7 (Bonus) - Analizza i tag
 // Usa reduce per creare un oggetto (tagCounts) che conta quante volte ogni tag viene usato tra i libri.
+
+const tagCounts= books.reduce((acc,book)=>{book.tags.forEach((tag)=>{
+    if(acc[tag]){
+        acc[tag]++
+    }else{
+        acc[tag]=1
+    }
+});
+return acc},{})
+
+console.log(tagCounts);
